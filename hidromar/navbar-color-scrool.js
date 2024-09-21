@@ -1,8 +1,7 @@
 const body = document.body;
 const navbar = document.querySelector(".navbar_component");
-let originalTema = navbar.getAttribute("tema"); // Armazena o tema original
+let originalTema = navbar.getAttribute("tema");
 
-// Função para atualizar as cores da navbar
 function updateNavbarColors() {
   const tema = navbar.getAttribute("tema");
 
@@ -11,13 +10,13 @@ function updateNavbarColors() {
     document.documentElement.style.setProperty("--navbar--color-02", "white");
     document.documentElement.style.setProperty("--navbar--color-03", "");
     document.documentElement.style.setProperty("--navbar--color-04", "white");
-    navbar.style.backgroundColor = ""; // Restaura o background padrão
+    navbar.style.backgroundColor = "";
   } else if (tema === "red") {
     document.documentElement.style.setProperty("--navbar--color-01", "#d00324");
     document.documentElement.style.setProperty("--navbar--color-02", "white");
     document.documentElement.style.setProperty("--navbar--color-03", "white");
     document.documentElement.style.setProperty("--navbar--color-04", "white");
-    navbar.style.backgroundColor = ""; // Restaura o background padrão
+    navbar.style.backgroundColor = "";
   } else if (tema === "nav-open") {
     document.documentElement.style.setProperty("--navbar--color-01", "white");
     document.documentElement.style.setProperty("--navbar--color-02", "#d00324");
@@ -26,29 +25,27 @@ function updateNavbarColors() {
       "transparent"
     );
     document.documentElement.style.setProperty("--navbar--color-04", "#282735");
-    navbar.style.backgroundColor = "white"; // Define o background para branco quando o menu está aberto
+    navbar.style.backgroundColor = "white";
   } else {
     document.documentElement.style.setProperty("--navbar--color-01", "");
     document.documentElement.style.setProperty("--navbar--color-02", "");
     document.documentElement.style.setProperty("--navbar--color-03", "");
     document.documentElement.style.setProperty("--navbar--color-04", "");
-    navbar.style.backgroundColor = ""; // Restaura o background padrão
+    navbar.style.backgroundColor = "";
   }
 }
 
-// Função para controlar o scroll e alterar o tema quando a navbar abre/fecha
 function letBodyScroll(bool) {
   if (bool) {
     body.style.overflow = "hidden";
-    navbar.setAttribute("tema", "nav-open"); // Altera o tema para 'nav-open' quando a navbar está aberta
+    navbar.setAttribute("tema", "nav-open");
   } else {
     body.style.overflow = "auto";
-    navbar.setAttribute("tema", originalTema); // Restaura o tema original quando a navbar é fechada
+    navbar.setAttribute("tema", originalTema);
   }
-  updateNavbarColors(); // Atualiza as cores ao abrir ou fechar a navbar
+  updateNavbarColors();
 }
 
-// Observer para detectar mudanças na navbar (abrir/fechar)
 const targetNode = document.querySelector(".w-nav-button");
 const config = { attributes: true, childList: false, subtree: false };
 
@@ -64,5 +61,4 @@ const callback = function (mutationsList, observer) {
 const observer = new MutationObserver(callback);
 observer.observe(targetNode, config);
 
-// Executa a atualização das cores ao carregar a página
 document.addEventListener("DOMContentLoaded", updateNavbarColors);
