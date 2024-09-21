@@ -11,11 +11,13 @@ function updateNavbarColors() {
     document.documentElement.style.setProperty("--navbar--color-02", "white");
     document.documentElement.style.setProperty("--navbar--color-03", "");
     document.documentElement.style.setProperty("--navbar--color-04", "white");
+    navbar.style.backgroundColor = ""; // Restaura o background padrão
   } else if (tema === "red") {
     document.documentElement.style.setProperty("--navbar--color-01", "#d00324");
     document.documentElement.style.setProperty("--navbar--color-02", "white");
     document.documentElement.style.setProperty("--navbar--color-03", "white");
     document.documentElement.style.setProperty("--navbar--color-04", "white");
+    navbar.style.backgroundColor = ""; // Restaura o background padrão
   } else if (tema === "nav-open") {
     document.documentElement.style.setProperty("--navbar--color-01", "white");
     document.documentElement.style.setProperty("--navbar--color-02", "#d00324");
@@ -24,12 +26,13 @@ function updateNavbarColors() {
       "transparent"
     );
     document.documentElement.style.setProperty("--navbar--color-04", "#282735");
-    document.documentElement.style.setProperty(".navbar_component", "white");
+    navbar.style.backgroundColor = "white"; // Define o background para branco quando o menu está aberto
   } else {
     document.documentElement.style.setProperty("--navbar--color-01", "");
     document.documentElement.style.setProperty("--navbar--color-02", "");
     document.documentElement.style.setProperty("--navbar--color-03", "");
     document.documentElement.style.setProperty("--navbar--color-04", "");
+    navbar.style.backgroundColor = ""; // Restaura o background padrão
   }
 }
 
