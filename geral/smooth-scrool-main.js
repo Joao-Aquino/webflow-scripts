@@ -12,4 +12,4 @@
 	data-useRaf="true"
 	data-infinite="false"
 	defer
-	src="https://cdn.prod.website-files.com/66d250a0bbcfd6d72e33f3c4/66d482984c7a9017c6ee2b34_smooth-scrool-file.txt">
+	src="https://cdn.jsdelivr.net/gh/Joao-Aquino/webflow-scripts@main/geral/smooth-scrool.js">
