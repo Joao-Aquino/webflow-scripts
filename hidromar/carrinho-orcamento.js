@@ -91,7 +91,7 @@
         const item = quoteItems[key];
 
         // Adiciona os detalhes do item na string formatada
-        cartSummary += `Nome do Item: ${item.name}\nQuantidade: ${item.quantity}\n\n`;
+        cartSummary += `Nome do Item: ${item.name}\nQuantidade: ${item.quantity}\n<br>\n`;
       });
 
       // Cria um input hidden contendo todos os itens formatados
