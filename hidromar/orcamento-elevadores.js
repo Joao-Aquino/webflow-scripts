@@ -60,6 +60,9 @@
               // Adicionar a classe "is-added" ao botão
               target.classList.add("is-added");
 
+              // Atualiza o contador de itens no carrinho instantaneamente
+              updateCartItemCount(); // Chama a função que atualiza o contador
+
               // Verifica se a classe foi adicionada corretamente
               console.log(
                 `Classe 'is-added' adicionada ao botão: ${target.classList}`
@@ -67,7 +70,7 @@
             }
 
             // Exibe o estado atual do carrinho no console
-            console.log("Estado atual do carrinho:", quoteItems);
+            console.log("Estado atual do carrinho após clique:", quoteItems);
           } else {
             console.error(
               "Botão não contém o dataset necessário para adicionar ao carrinho."
