@@ -1,13 +1,12 @@
-// Função para inicializar um carrossel com Splide
+// Função genérica para inicializar sliders com as configurações padrão
 function initSplide(
   selector,
   progressBarSelector,
   nextButtonSelector,
-  prevButtonSelector,
-  options = {}
+  prevButtonSelector
 ) {
   var splide = new Splide(selector, {
-    type: "loop",
+    type: "slide", // Configuração padrão para os sliders comuns
     trimSpace: "move",
     overflow: "visible !important",
     padding: "2rem",
@@ -16,7 +15,7 @@ function initSplide(
     snap: true,
     perPage: 3,
     lazyload: "nearby",
-    autoplay: options.autoplay || false, // Usa opção autoplay se fornecida
+    autoplay: false, // Sem autoplay por padrão
     breakpoints: {
       767: {
         perPage: 2,
@@ -27,7 +26,6 @@ function initSplide(
         padding: "1.5rem",
       },
     },
-    ...options, // Mescla configurações adicionais
   });
 
   var bar = splide.root.querySelector(progressBarSelector);
@@ -56,7 +54,7 @@ function initSplide(
     });
 }
 
-// Inicializa os sliders existentes com botões individuais
+// Inicializa sliders com configurações padrão
 initSplide(
   "#splide-elevadores",
   "#progresso-elevadores",
@@ -70,10 +68,19 @@ initSplide(
   "#prev-lavadoras"
 );
 
-initSplide(
-  "#splide-banner",
-  "#progresso-banner",
-  "#next-banner",
-  "#prev-banner",
-  { autoplay: true }
-);
+// Inicializa o #splide-banner com configurações específicas e sem herança das configurações padrão
+var splideBanner = new Splide("#splide-banner", {
+  type: "loop",
+  autoplay: true,
+});
+
+splideBanner.mount();
+
+// Configura os botões de controle para o #splide-banner
+document.querySelector("#next-banner").addEventListener("click", function () {
+  splideBanner.go(">");
+});
+
+document.querySelector("#prev-banner").addEventListener("click", function () {
+  splideBanner.go("<");
+});
