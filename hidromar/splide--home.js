@@ -1,5 +1,11 @@
-// Função para inicializar um carrossel
-function initSplide(selector, progressBarSelector) {
+// Função para inicializar um carrossel com Splide
+function initSplide(
+  selector,
+  progressBarSelector,
+  nextButtonSelector,
+  prevButtonSelector,
+  options = {}
+) {
   var splide = new Splide(selector, {
     type: "loop",
     trimSpace: "move",
@@ -10,6 +16,7 @@ function initSplide(selector, progressBarSelector) {
     snap: true,
     perPage: 3,
     lazyload: "nearby",
+    autoplay: options.autoplay || false, // Usa opção autoplay se fornecida
     breakpoints: {
       767: {
         perPage: 2,
@@ -20,6 +27,7 @@ function initSplide(selector, progressBarSelector) {
         padding: "1.5rem",
       },
     },
+    ...options, // Mescla configurações adicionais
   });
 
   var bar = splide.root.querySelector(progressBarSelector);
@@ -28,20 +36,44 @@ function initSplide(selector, progressBarSelector) {
   splide.on("mounted move", function () {
     var end = splide.Components.Controller.getEnd() + 1;
     var rate = Math.min((splide.index + 1) / end, 1);
-    bar.style.width = String(100 * rate) + "%";
+    if (bar) bar.style.width = String(100 * rate) + "%";
   });
 
+  // Monta o slider
   splide.mount();
+
+  // Configura os botões de controle individuais
+  document
+    .querySelector(nextButtonSelector)
+    .addEventListener("click", function () {
+      splide.go(">");
+    });
+
+  document
+    .querySelector(prevButtonSelector)
+    .addEventListener("click", function () {
+      splide.go("<");
+    });
 }
 
-// Inicializa os dois carrosséis usando a função genérica
-initSplide("#splide-elevadores", "#progresso-elevadores");
-initSplide("#splide-lavadoras", "#progresso-lavadoras");
+// Inicializa os sliders existentes com botões individuais
+initSplide(
+  "#splide-elevadores",
+  "#progresso-elevadores",
+  "#next-elevadores",
+  "#prev-elevadores"
+);
+initSplide(
+  "#splide-lavadoras",
+  "#progresso-lavadoras",
+  "#next-lavadoras",
+  "#prev-lavadoras"
+);
 
-// Controle dos botões de próximo e anterior
-$(".next-splide").click(function () {
-  $(".splide__arrow.splide__arrow--next").click();
-});
-$(".prev-splide").click(function () {
-  $(".splide__arrow.splide__arrow--prev").click();
-});
+initSplide(
+  "#splide-banner",
+  "#progresso-banner",
+  "#next-banner",
+  "#prev-banner",
+  { autoplay: true }
+);
