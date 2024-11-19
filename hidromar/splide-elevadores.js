@@ -5,7 +5,6 @@ const splideMain = new Splide("#main-carroussel", {
   lazyload: "nearby",
   snap: true,
   pagination: false,
-  cover: true,
 });
 
 const thumbnails = document.getElementsByClassName("thumbnail");
