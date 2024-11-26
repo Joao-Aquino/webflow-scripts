@@ -1,6 +1,5 @@
 // Inicializa o carrossel Splide
 var splide = new Splide("#blog-recomendado", {
-  type: "loop",
   trimSpace: "move",
   padding: "0rem",
   focus: "center",
