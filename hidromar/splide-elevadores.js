@@ -46,7 +46,6 @@ splideMain.mount();
 
 // Slider Recomendado
 const splideRecommended = new Splide("#produto-recomendado", {
-  type: "loop",
   trimSpace: "move",
   padding: "0rem",
   focus: "center",
