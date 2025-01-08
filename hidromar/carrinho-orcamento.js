@@ -91,13 +91,13 @@
         const item = quoteItems[key];
 
         // Adiciona os detalhes do item na string formatada
-        cartSummary += `Nome do Item: ${item.name}\\nQuantidade: ${item.quantity}\\n<br>\\n`;
+        cartSummary += `Nome do Item: ${item.name}\nQuantidade: ${item.quantity}\n\n`;
       });
 
       // Cria um input hidden contendo todos os itens formatados
       const hiddenInput = document.createElement("input");
       hiddenInput.type = "hidden";
-      hiddenInput.name = "items-orcamento"; // Nome do input
+      hiddenInput.name = "Orçamento"; // Nome do input
       hiddenInput.value = cartSummary.trim(); // Remove espaços em branco extras
 
       // Adiciona o input ao formulário
@@ -112,6 +112,12 @@
     }
   }
 
+  // Função para esvaziar o carrinho
+  function clearCart() {
+    localStorage.removeItem("quoteItems");
+    console.log("Carrinho esvaziado.");
+  }
+
   // Função para capturar o envio do formulário
   function handleFormSubmit(event) {
     // Adiciona os itens do carrinho ao formulário
@@ -119,6 +125,9 @@
 
     // Permite o envio do formulário
     console.log("Formulário pronto para envio.");
+
+    // Esvazia o carrinho após o envio do formulário
+    clearCart();
   }
 
   // Inicializa a função ao carregar a página
