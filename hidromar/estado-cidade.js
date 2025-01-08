@@ -16,7 +16,7 @@ document.addEventListener("DOMContentLoaded", function () {
   }
 
   // Lista de estados brasileiros com ID, sigla e nome
-  var estadosBrasileiros = [
+  const estadosBrasileiros = [
     { id: 12, sigla: "AC", nome: "Acre" },
     { id: 27, sigla: "AL", nome: "Alagoas" },
     { id: 16, sigla: "AP", nome: "Amapá" },
@@ -47,6 +47,17 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   // Preencher a lista suspensa de estados
+  const estadosSelect = document.getElementById("estadosSelect");
+  const municipiosSelect = document.getElementById("municipiosSelect");
+
+  // Adicionar placeholder
+  const placeholderOption = document.createElement("option");
+  placeholderOption.value = "";
+  placeholderOption.text = "Selecione um estado";
+  placeholderOption.disabled = true;
+  placeholderOption.selected = true;
+  estadosSelect.appendChild(placeholderOption);
+
   estadosBrasileiros.forEach((estado) => {
     console.log("Adicionando estado:", estado);
     var option = document.createElement("option");
