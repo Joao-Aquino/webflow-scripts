@@ -1,13 +1,12 @@
 document.addEventListener("DOMContentLoaded", function () {
   console.log("DOM totalmente carregado");
 
-  var estadosSelect = document.getElementById("estados");
-  var municipiosSelect = document.getElementById("municipios");
+  const estadosSelect = document.getElementById("estados");
+  const municipiosSelect = document.getElementById("municipios");
 
   // Verificando se os elementos foram encontrados no DOM
   console.log("Elementos encontrados:", { estadosSelect, municipiosSelect });
 
-  // Se os elementos não forem encontrados, sai do script
   if (!estadosSelect || !municipiosSelect) {
     console.error(
       "Erro: Elementos estados ou municípios não encontrados no DOM."
@@ -46,10 +45,6 @@ document.addEventListener("DOMContentLoaded", function () {
     { id: 17, sigla: "TO", nome: "Tocantins" },
   ];
 
-  // Preencher a lista suspensa de estados
-  const estadosSelect = document.getElementById("estadosSelect");
-  const municipiosSelect = document.getElementById("municipiosSelect");
-
   // Adicionar placeholder
   const placeholderOption = document.createElement("option");
   placeholderOption.value = "";
@@ -77,7 +72,6 @@ document.addEventListener("DOMContentLoaded", function () {
       return;
     }
 
-    // Carregar municípios a partir da API do IBGE com base no ID do estado selecionado
     fetch(
       `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${estadoSelecionado}/municipios`
     )
