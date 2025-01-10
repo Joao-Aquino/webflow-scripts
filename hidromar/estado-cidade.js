@@ -56,7 +56,7 @@ document.addEventListener("DOMContentLoaded", function () {
   estadosBrasileiros.forEach((estado) => {
     console.log("Adicionando estado:", estado);
     var option = document.createElement("option");
-    option.value = estado.id;
+    option.value = estado.sigle + "-" + estado.nome;
     option.text = estado.sigla + " - " + estado.nome;
     estadosSelect.appendChild(option);
   });
