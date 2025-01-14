@@ -1,10 +1,16 @@
 // Função para inicializar um carrossel
-function initSplide(selector, progressBarSelector) {
-  var splide = new Splide(selector, {
+function initSplide(
+  selector,
+  progressBarSelector,
+  nextButtonSelector,
+  prevButtonSelector,
+  options = {}
+) {
+  // Configurações padrão do Splide
+  const defaultOptions = {
     type: "loop",
     trimSpace: "move",
     overflow: "visible !important",
-    padding: "2rem",
     focus: "center",
     drag: "free",
     snap: true,
@@ -20,7 +26,12 @@ function initSplide(selector, progressBarSelector) {
         padding: "1.5rem",
       },
     },
-  });
+  };
+
+  // Mescla as opções personalizadas com as padrão
+  const splideOptions = { ...defaultOptions, ...options };
+
+  var splide = new Splide(selector, splideOptions);
 
   var bar = splide.root.querySelector(progressBarSelector);
 
@@ -32,16 +43,46 @@ function initSplide(selector, progressBarSelector) {
   });
 
   splide.mount();
+
+  // Controle independente dos botões de próximo e anterior
+  document
+    .querySelector(nextButtonSelector)
+    .addEventListener("click", function () {
+      splide.go(">");
+    });
+
+  document
+    .querySelector(prevButtonSelector)
+    .addEventListener("click", function () {
+      splide.go("<");
+    });
 }
 
-// Inicializa os dois carrosséis usando a função genérica
-initSplide("#splide-elevadores", "#progresso-elevadores");
-initSplide("#splide-lavadoras", "#progresso-lavadoras");
-
-// Controle dos botões de próximo e anterior
-$(".next-splide").click(function () {
-  $(".splide__arrow.splide__arrow--next").click();
-});
-$(".prev-splide").click(function () {
-  $(".splide__arrow.splide__arrow--prev").click();
-});
+// Inicializa os carrosséis com opções específicas
+initSplide(
+  "#splide-elevadores",
+  "#progresso-elevadores",
+  "#next-elevadores",
+  "#prev-elevadores",
+  {
+    padding: "2rem",
+  }
+);
+initSplide(
+  "#splide-lavadoras",
+  "#progresso-lavadoras",
+  "#next-lavadoras",
+  "#prev-lavadoras",
+  {
+    padding: "2rem",
+  }
+);
+initSplide(
+  "#splide-banner-home",
+  "#progresso-banner-home",
+  "#next-banner-home",
+  "#prev-banner-home",
+  {
+    padding: "", // Remove o padding
+  }
+);
