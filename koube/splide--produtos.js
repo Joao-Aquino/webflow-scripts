@@ -7,9 +7,7 @@ const splideMain = new Splide("#produtos-header-produtos", {
   pagination: false,
 });
 
-const thumbnails = document.getElementsByClassName(
-  "thumbnails-header-produtos"
-);
+const thumbnails = document.getElementsByClassName("product-header_item");
 let current;
 
 for (let i = 0; i < thumbnails.length; i++) {
@@ -68,7 +66,7 @@ const splideRecommended = new Splide("#produto-recomendado", {
 });
 
 const barRecommended = splideRecommended.root.querySelector(
-  "#progresso-recomendado"
+  "#produto-progresso-recomendado"
 );
 
 splideRecommended.on("mounted move", function () {
