@@ -58,26 +58,8 @@ function initSplide(
 
 // Inicializa os carrosséis de forma independente
 initSplide(
-  "#splide-banner",
-  "#progresso-banner",
-  "#next-banner",
-  "#prev-banner"
-);
-initSplide(
-  "#splide-produtos",
-  "#progresso-produtos",
-  "#next-produtos",
-  "#prev-produtos"
-);
-initSplide(
-  "#splide-categorias",
-  "#progresso-categorias",
-  "#next-categorias",
-  "#prev-categorias"
-);
-initSplide(
-  "#splide-testimonial",
-  "#progresso-testimonial",
-  "#next-testimonial",
-  "#prev-testimonial"
+  "#splide-blog-recomendado",
+  "#progresso-blog-recomendado",
+  "#next-blog-recomendado",
+  "#prev-blog-recomendado"
 );
