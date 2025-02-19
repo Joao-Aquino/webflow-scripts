@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", () => {
     navbar.classList.toggle("dark", isDark);
     navbarBackground?.classList.toggle("dark", isDark);
     navbarImage?.classList.toggle("dark", isDark);
-    navbarButton?.classList.toggle("dark", isDark);
+    navbarButton?.classList.toggle("is-dark", isDark);
     links.forEach((link) => link.classList.toggle("dark", isDark));
     if (window.innerWidth <= 991) {
       navbarMenuTop?.classList.toggle("dark", isDark);
