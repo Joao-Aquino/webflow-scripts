@@ -43,7 +43,7 @@ const options = {
   plotOptions: {
     bar: {
       borderRadius: 6,
-      columnWidth: "50%",
+      columnWidth: "25%",
       distributed: true,
     },
   },
