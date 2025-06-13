@@ -34,16 +34,16 @@ const options = {
     labels: {
       style: {
         color: "#444",
-        fontSize: "0.8rem",
+        fontSize: "0.5rem",
         fontFamily: "DM Sans, sans-serif",
       },
     },
   },
-  colors: ["#00524e", "#0f997e", "#16e398"],
+  colors: ["#00524e", "#ff9f1c", "#0f997e", "#16e398"],
   plotOptions: {
     bar: {
       borderRadius: 6,
-      columnWidth: "25%",
+      columnWidth: "85%",
       distributed: true,
     },
   },
