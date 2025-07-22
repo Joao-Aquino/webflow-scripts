@@ -73,6 +73,12 @@
       firstRun = false;
       return CONFIG.fullRangeLabel;
     }
+
+    // Show "$500K+" instead of "$500,000" when at maximum value
+    if (value === CONFIG.maxVal) {
+      return "$500K+";
+    }
+
     return formatter.format(value);
   }
 
@@ -89,17 +95,6 @@
   function updateVisuals(value, percentage, displayLabel) {
     elements.rangeTrack.style.width = percentage + "%";
     elements.sliderValue.textContent = displayLabel;
-  }
-
-  function updateURL(categoryLabel) {
-    try {
-      // Build URL manually to avoid encoding the $ symbols
-      const baseUrl = window.location.origin + window.location.pathname;
-      const newUrl = `${baseUrl}?funding-amount=${categoryLabel}`;
-      window.history.replaceState({}, "", newUrl);
-    } catch (error) {
-      console.warn("TryKeep Slider: URL update failed", error);
-    }
   }
 
   function updateFormLinks(categoryLabel) {
@@ -122,9 +117,8 @@
     const displayLabel = getDisplayLabel(value);
     const categoryLabel = normalizeCategoryLabel(labelIndex);
 
-    // Batch DOM updates
+    // Update visuals and form links only (never touch page URL)
     updateVisuals(value, percentage, displayLabel);
-    updateURL(categoryLabel);
     updateFormLinks(categoryLabel);
 
     rafId = null; // Reset RAF flag
