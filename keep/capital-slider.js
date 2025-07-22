@@ -18,7 +18,7 @@
       "$250K – $500K",
       "$500K+",
     ],
-    thresholds: [10000, 25000, 50000, 100000, 150000, 250000, 500000],
+    thresholds: [10000, 25000, 50000, 100000, 150000, 250000, 499000],
   };
 
   let elements,
@@ -93,9 +93,10 @@
 
   function updateURL(categoryLabel) {
     try {
-      const url = new URL(window.location);
-      url.searchParams.set("funding-amount", categoryLabel);
-      window.history.replaceState({}, "", url.toString());
+      // Build URL manually to avoid encoding the $ symbols
+      const baseUrl = window.location.origin + window.location.pathname;
+      const newUrl = `${baseUrl}?funding-amount=${categoryLabel}`;
+      window.history.replaceState({}, "", newUrl);
     } catch (error) {
       console.warn("TryKeep Slider: URL update failed", error);
     }
@@ -104,9 +105,9 @@
   function updateFormLinks(categoryLabel) {
     elements.formLinks.forEach((link) => {
       try {
-        const url = new URL(link.href);
-        url.searchParams.set("funding-amount", categoryLabel);
-        link.href = url.toString();
+        // Build URL manually to avoid encoding the $ symbols
+        const linkBase = link.href.split("?")[0];
+        link.href = `${linkBase}?funding-amount=${categoryLabel}`;
       } catch (error) {
         console.warn("TryKeep Slider: Form link update failed", error);
       }
