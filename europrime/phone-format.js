@@ -1,4 +1,3 @@
-<script>
 // Brazilian Phone Formatter with Character Limiting
 function formatBrazilianPhone(value) {
     // Remove all non-digits
@@ -132,4 +131,3 @@ document.addEventListener('DOMContentLoaded', function() {
         });
     });
 });
-</script>
