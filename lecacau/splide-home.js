@@ -48,6 +48,7 @@ document.addEventListener("DOMContentLoaded", () => {
       next: "#next-header",
       prev: "#prev-header",
       opts: {
+        padding: '0rem',
         perPage: 1,
         perMove: 1,
         type: "loop",
@@ -56,6 +57,10 @@ document.addEventListener("DOMContentLoaded", () => {
         pauseOnHover: true,
         pauseOnFocus: true,
         speed: 1600,
+        breakpoints: {
+          767: { padding: '0rem' },
+          568: { padding: '0rem' },
+        },
       },
     },
   ];
