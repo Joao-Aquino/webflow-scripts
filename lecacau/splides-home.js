@@ -9,7 +9,7 @@ document.addEventListener("DOMContentLoaded", () => {
     snap: true,
     breakpoints: {
       767: { perPage: 2, padding: { left: "0rem", right: "1.5rem" } },
-      568: { perPage: 2, padding: { left: "0rem", right: "1.5rem" } },
+      568: { perPage: 1, padding: { left: "0rem", right: "1.5rem" } },
     },
   };
 
